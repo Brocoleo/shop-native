@@ -55,10 +55,7 @@ export default function App() {
     <AutContext.Provider value={authData}>
       <PaperProvider>
         {auth ? 
-        <View style={{flex:1, justifyContent: 'center', alignItems:'center'}}>
-          <Text>Zona usuarios</Text>
-          <Button title="Cerrar sesion" onPress={authData.logout}/>
-        </View> :
+        <AppNavigation /> :
          <Auth />}
       </PaperProvider>
     </AutContext.Provider>
