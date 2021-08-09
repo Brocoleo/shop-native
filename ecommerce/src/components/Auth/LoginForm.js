@@ -2,6 +2,7 @@ import React , {useState} from 'react'
 import { View, Text } from 'react-native'
 import {useFormik} from "formik"
 import * as Yup from 'yup'
+import useAuth from '../../hooks/useAuth'
 import {loginApi}  from "../../api/user"
 import {TextInput, Button} from "react-native-paper"
 import { formStyle } from '../../styles'
@@ -9,6 +10,7 @@ import { formStyle } from '../../styles'
 export default function LoginForm(props) {
     const {changeForm} = props
     const [loading, setLoading] = useState(false)
+    const {login} = useAuth();
 
     const formik = useFormik({
         initialValues : initialValues(),
@@ -18,7 +20,7 @@ export default function LoginForm(props) {
            try {
                const response = await loginApi(formData);
                if(response.statusCode) throw "Error en el usuario o contrasena"
-               console.log(response)
+               login(response)
            } catch (error) {               
                 Toast.show("Error al iniciar sesion",{
                     position: Toast.positions.CENTER,
