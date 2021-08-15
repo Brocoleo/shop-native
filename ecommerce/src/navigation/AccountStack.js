@@ -2,6 +2,8 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Account from '../screens/Account/Account'
 import ChangeName from '../screens/Account/ChangeName'
+import Addresses from '../screens/Account/Addresses'
+import AddAddress from '../screens/Account/AddAddress'
 import ChangeEmail from '../screens/Account/ChangeEmail'
 import ChangeUsername from '../screens/Account/ChangeUsername'
 import colors from '../styles/colors'
@@ -50,6 +52,19 @@ export default function AccountStack() {
             component={ChangePassword}
             options={{title:"Cambiar contrasenas"}}
             />
+
+            <Stack.Screen 
+            name="add-address"
+            component={AddAddress}
+            options={{title:"Nueva Direccion"}}
+            />
+
+            <Stack.Screen 
+            name="addresses"
+            component={Addresses}
+            options={{title:"Mis Direcciones"}}
+            />
+
         </Stack.Navigator>
     )
 }
